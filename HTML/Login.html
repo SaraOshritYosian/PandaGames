@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/Login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper"> 
+        <div class=" form-box login">   
+            <form action="#">
+                <h2>Login</h2>
+                <div class=" input-box">
+                    <span class="icon">
+                    <i class="fa fa-envelope-o" style="font-size:24px"></i>
+                 </span> 
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                <span class="icon eye-close" onclick="togglePasswordVisibility()">
+                    <i class="fa fa-eye-slash" class="eyeClose" style="font-size:24px"></i>
+                </span>
+                <span class="icon eye-open" onclick="togglePasswordVisibility()">
+                    <i class="fa fa-eye" class="eyeClose" style="font-size:24px"></i>
+                </span> 
+                <input id="passwordInput" type="password" required>
+                <label>Password</label>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">
+                remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn" onclick="openGamesPage()">Login
+            </button>
+                <div class="login-register">
+                    <p>Don't have an account? 
+                        <a href="#" class="register-link">Register</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div class=" form-box register">
+            <h2>Sign up</h2>
+            <form action="#">
+                <div class=" input-box">
+                    <span class="icon">
+                        <i class="fa fa-user-circle-o" style="font-size:24px"></i>
+                 </span> 
+                    <input type="text" required>
+                    <label>Username</label>
+                </div>
+                <div class=" input-box">
+                    <span class="icon">
+                    <i class="fa fa-envelope-o" style="font-size:24px"></i>
+                 </span> 
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                <span class="icon">
+                    <i class="fa fa-lock" style="font-size:24px"></i>
+                </span> 
+                <input type="password" required>
+                <label>Password</label>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">
+                I agree to the terms & conditions</label>
+                
+            </div>
+            <button type="submit" class="btn" onclick="openGamesPage()">Sign up
+            </button>
+                <div class="login-register">
+                    <p>Already have an account? 
+                        <a href="#" class="login-link">Login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src ="/JS/Login.js">   
+    </script>
+</body>
+
+</html>
