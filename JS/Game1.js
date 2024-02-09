@@ -1,7 +1,11 @@
 let move_speed = 5, gravity = 0.4;
+let startTime, endTime;//זמן משחק
+let palyAgain =false;//אם השחקן רוצה לשחק שוב אז מתחיל משחק חדש
 let panda = document.querySelector('.panda');
 let img = document.getElementById('panda-1');
-
+let score_g = document.getElementById('score');
+let level_g = document.getElementById('level');
+let time_g = document.getElementById('time');
 
 let panda_props;
 var selectedLevel = document.querySelector('input[name="level"]:checked');
@@ -15,7 +19,7 @@ let level_val = document.querySelector('.level_val');
 let time_title = document.querySelector('.time_title')
 let time_val = document.querySelector('.time_val');
 let gameOverScore = document.querySelector('.game-over-container');
-
+//איפוס נתונים אתחלתיים 
 let level_d ='Easy'
 let game_state = 'Start';
 img.style.display = 'none';
@@ -29,7 +33,10 @@ function startGame() {
     let Medium = document.getElementById('medium');
     let hard = document.getElementById('hard'); 
     message.style.display='block';
-    chooseLevel.style.display = 'none'; 
+    message.innerHTML =
+        ' Enter To Start Game'+ '<span>&uarr;</span>'.fontcolor('red')+'<br>Press Enter To Restart';
+        message.classList.add('messageStyle');
+        chooseLevel.style.display = 'none'; 
     if(Medium.checked == true){
         level_d=Medium.value;
         move_speed=3;
@@ -41,6 +48,40 @@ function startGame() {
         level_d=hard.value;
     }
 }
+//אחרי שהמשחק נגמר אז אם הלחצן לוחץ על אפשרות שהוא רוצה לחזור לעמוד הראשי
+function homeClick(){
+    window.location.href = 'games.html';
+    }
+   
+//אחרי שהמשחק נגמר אז אם הלחצן לוחץ על אפשרות שהוא רוצה לשחק שוב אז מביאים אותו לפתיחת אפשרויות
+function AgainPlayClick(){
+    //אתחול הנתונים
+     move_speed = 5;
+    gravity = 0.4;
+    palyAgain=false;
+    level_d ='Easy'
+    game_state = 'Start';
+    img.style.display = 'none';
+    chooseLevel.style.display = 'block';
+    gameOverScore.style.display = 'none';
+    document.querySelectorAll('.pipe_sprite').forEach((e) => {//להוציא את העצים
+    e.remove();
+});
+}
+
+function padNumber(num) {
+    return (num < 10 ? '0' : '') + num;
+}
+function updateTimer() {
+    const currentTime = new Date().getTime();
+    const elapsedTime = currentTime - startTime;
+    const minutes = Math.floor(elapsedTime / (1000 * 60));
+    const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+    const formattedTime = padNumber(minutes) + ':' + padNumber(seconds);
+    time_val.innerText = formattedTime;
+    requestAnimationFrame(updateTimer);
+}
+
 /*פונקציה זו מופעלת כאשר המשתמש לוחץ על מקש "Enter" כדי להתחיל או להפעיל מחדש את המשחק. הוא מבצע את הפעולות הבאות:
 
 - מסיר את כל רכיבי הצינור הקיימים על המסך.
@@ -49,8 +90,9 @@ function startGame() {
 - מנקה את ההודעה ומאפס את תצוגת הניקוד.
 - מסיר את הסגנון של המשחק מעל ההודעה.
 - קורא לפונקציית "הפעל" כדי להתחיל את לולאת המשחק.*/
+
 document.addEventListener('keydown', (e) => {
-    if (chooseLevel.style.display =='none' &&e.key == 'Enter' && game_state !== 'Play') {
+    if (palyAgain==false &&chooseLevel.style.display =='none' &&e.key == 'Enter' && game_state !== 'Play') {
         document.querySelectorAll('.pipe_sprite').forEach((e) => {
             e.remove();
         });
@@ -66,12 +108,22 @@ document.addEventListener('keydown', (e) => {
         time_title.innerHTML = 'Time: ';
         time_val.innerHTML = '00:00';
         message.classList.remove('messageStyle');
+        startTime = new Date().getTime();
+        updateTimer();
         play();
+    }
+    if ( palyAgain ==true && e.key == 'Enter' && game_state !== 'Play'){
+        gameOverScore.style.display = 'block';
+        message.style.display = 'none';
+        message.classList.remove('messageStyle');
+        
     }
 });
 
 
+
 function play() {
+
     /*פונקציה זו מטפלת בתנועת הצינורות ובודקת התנגשויות עם הפנדה. זה חלק מלולאת המשחק ומבצע את המשימות הבאות:
 
 - עובר דרך כל אלמנט צינור על המסך.
@@ -117,32 +169,34 @@ function play() {
     }
 
     requestAnimationFrame(move);
-    // סיום המשחק 
+// סיום המשחק העתקת מלוח את הנתונים על המשחק ומראה לשחק ונותן לו אפשרות אם רוצה להמשיך או לא
 function game_end(){
-    score_title.innerHTML = '';
-        score_val.innerHTML = '';
+        score_title.innerHTML = '';
         level_title.innerHTML = '';
         level_val.innerHTML = '';
         time_title.innerHTML = '';
+        score_g.innerHTML = score_val.innerHTML;
+        level_g.innerHTML = level_d;
+        time_g.innerHTML = time_val.innerHTML;
+        score_val.innerHTML = '';
         time_val.innerHTML = '';
-
         message.innerHTML =
         'Game Over'.fontcolor('red') ;//+
        // '<br>Press Enter To Restart';
-    message.classList.add('messageStyle');
-    img.style.display = 'none';
-    gameOverScore.style.display = 'block';
-
+       message.classList.add('messageStyle');
+       img.style.display = 'none';
+       palyAgain =true;
+   
     }
 
-    let panda_by = 0;
 /*
 פונקציה זו מדמה את השפעת כוח הכבידה על הפנדה, וגורמת לו ליפול למטה. זה חלק מלולאת המשחק ומבצע את המשימות הבאות:
 
 - מעדכן את המיקום האנכי של הפנדה על סמך כוח הכבידה.
 - מאזין לאירועי מפתח ("ArrowUp" או מקש רווח) כדי לגרום לפנדה לקפוץ על ידי התאמת המיקום האנכי שלה.
 - בודק אם הפנדה פוגע בחלק העליון או התחתון של המסך. אם כן, מצב המשחק מוגדר ל"סיום", ומוצגת הודעת משחק מעבר.*/
-    function apply_gravity() {
+let panda_by = 0;
+function apply_gravity() {
         if (game_state !== 'Play') return;
 
         panda_by = panda_by + gravity;
