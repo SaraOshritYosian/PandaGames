@@ -1,0 +1,235 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.background{
+    height: 100vh;
+    width: 100vw;
+    background: url('/IMAGES/backgroung-game1.jpg') no-repeat center center fixed;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+}
+.panda{
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    top: 20vh;
+    left: 50vw;
+    z-index: 100;
+}
+.pipe_sprite{
+    position: fixed;
+    top: 40vh;
+    left: 100vw;
+    height: 70vh;
+    width: 7vw;
+    background: radial-gradient(lightgreen 50%, green);
+    border: 5px solid black;
+}
+
+.message{
+position: absolute;
+z-index: 10;
+color: black;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+font-size: 50px;
+white-space: nowrap;
+}
+.messageStyle{
+    background-color: white;
+    padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0, )0px 3px 8px;
+    border-radius: 5%;
+}
+
+.level-selection {
+    position: absolute;
+    text-align: left;
+    background: #013138;
+    width: 400px;
+    height: 500px;
+    margin: 100px 0 0 470px;
+   /* display: none;*/
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(43, 44, 66, 0.1); 
+}
+
+.game-over-container {
+    position: fixed;
+    z-index: 10;
+    height: 10vh;
+    z-index: 11;
+    position:absolute;
+    text-align: left;
+    background: #043a43;
+    width: 400px;
+    height: 500px;
+    margin: -550px 100px 0 470px;
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(43, 44, 66, 0.1); 
+}
+.score-info {
+    margin-left: 10px;
+    font-size: 10vh;
+    font-weight: 100;
+    color: gold;
+    font-weight: bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+.game-over-container button{
+   display:table-column;
+   padding: 20px 20px;
+   cursor: pointer;
+   background-color: gold; 
+   color: white;
+   border: none;
+   border-radius: 10px; 
+   font-size: 20px;   
+}
+
+.game-over-container button:hover {
+background-color:rgb(232, 214, 108); 
+}
+
+.level{
+    position: fixed;
+    z-index: 10;
+    height: 10vh;
+    font-size: 10vh;
+    font-weight: 100;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    top: 0;
+    left: 0;
+    margin: 10px ;
+    font-size: 8vh;
+}
+.level_val{
+    color: gold;
+    font-weight: bold;
+}
+
+
+.score{
+    position: fixed;
+    z-index: 10;
+    height: 10vh;
+    font-weight: 100;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    top: 0;
+    left: 0;
+    margin: 100px 0 0 10px ;
+    font-size: 8vh;
+}
+.score_val{
+    color: gold;
+    font-weight: bold;
+}
+
+.time{
+    position: fixed;
+    z-index: 10;
+    height: 10vh;
+    font-size: 8vh;
+    font-weight: 100;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    top: 0;
+    left: 0;
+    margin: 200px 0 0 10px ;
+    
+}
+.time_val{
+    color: gold;
+    font-weight: bold;
+}
+
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    
+}
+
+label {
+    -webkit-text-stroke-width: 0.2px;
+    display: inline-block;
+    margin: 11px 50px;
+    cursor: pointer;
+    width: 300px; 
+    color: white;
+    border-radius: 50px;
+    justify-content: space-between;
+    font-size: 30px;
+    background: #000;
+}
+
+input[type="radio"]{
+    width: 45px;
+    height: 45px;
+    position: relative;
+    border-radius: 50%;
+    background-color: #3b3e55;
+    cursor: pointer;
+    margin: 3px 30px 0 5px;
+}
+input[type="radio"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #3b3e55;
+    /*display: none;*/
+}
+
+input[type="radio"]:checked::before {
+    border-color: gold;
+    background-color: gold;
+}
+
+
+label:hover {
+    background-color: #151815; 
+}
+
+
+input[type="radio"]:checked+label {
+    background-color: #4CAF50; 
+    color: #45a049;
+}
+
+
+.play {
+    display: inline-block;
+    padding: 20px 20px;
+    margin: 80px 0 50px 150px;
+    cursor: pointer;
+    background-color: gold; 
+    color: white;
+    border: none;
+    border-radius: 10px; 
+    font-size: 20px;   
+}
+
+.play:hover {
+    background-color: rgb(221, 194, 47); 
+}
