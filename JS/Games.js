@@ -14,3 +14,6 @@ function openGame1(){
 function openGame2(){
     window.location.href = 'Game1.html';
 }
+function exit(){
+    window.location.href = 'Home.html';
+}
