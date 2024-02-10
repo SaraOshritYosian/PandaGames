@@ -12,5 +12,5 @@ function openGame1(){
     window.location.href = 'Game1.html';
 }
 function openGame2(){
-    window.location.href = 'Game1.html';
+    window.location.href = 'Game2.html';
 }
