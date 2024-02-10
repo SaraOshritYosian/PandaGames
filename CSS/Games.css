@@ -84,3 +84,13 @@ h1{
   .card .content .btn button:hover{
     transform: scale(0.9);
   }
+  span{
+    cursor: pointer; 
+  }
+  span i{
+    transform: scaleX(-1);
+    margin-left: -590px;
+    margin-top: 20px;
+    position: absolute;
+    color: #ffffff;
+  }

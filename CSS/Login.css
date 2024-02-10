@@ -139,6 +139,9 @@ body {
 .input-box .eye-open{
     display: none;
 }
+.input-box .eye-close{
+    display: block;
+}
 
 /**sign up**/
 .login-register p a{

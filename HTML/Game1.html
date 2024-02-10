@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-endge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/IMAGES/logo.jpg">
+    <link rel="stylesheet" href="/CSS/Game1.css">
+    <title>Panda</title>
+</head>
+<body>
+    <div class="level-selection">
+            <h1>Choose a level</h1>
+             
+             <label for="easy" > <input type="radio" id="easy" name="level" value='Easy' checked>easy speed X2</label>
+        
+             <label for="medium"> <input type="radio" id="medium" name="level" value='Medium' >medium speed X3</label>
+             
+             <label for="hard"> <input type="radio" id="hard" name="level" value='Hard' >hard speex X4</label>
+             
+             <button class="play" onclick="startGame()">PLAY</button>
+            
+    </div>
+
+
+    <div class="background"></div>
+    <img src="/IMAGES/Pilot.png" alt="" class="panda" id="panda-1">
+    <div class="message">
+        Enter To Start Game <p> <span style="color: red;">&uarr;</span>
+        ArrowUp to Control</p>
+    </div>
+    
+    <div class="game-over-container">
+      <h1>Game Over</h1>
+      <div class="score-info">
+        <p>Level: <span id="level"></span></p>
+        <p>Score: <span id="score"></span></p>
+        <p>Time: <span id="time"></span></p>
+        <button onclick="homeClick()">Home</button>
+        <button onclick="AgainPlayClick()" >Play Again</button>
+
+      </div>
+  </div>
+
+
+    <div class="score">
+        <span class="score_title"></span>
+        <span class="score_val"></span>
+
+    </div>
+    <div class="level">
+        <span class="level_title"></span>
+        <span class="level_val"></span>
+
+    </div>
+    <div class="time">
+        <span class="time_title"></span>
+        <span class="time_val"></span>
+
+    </div>
+
+    <script src="/JS/Game1.js"></script>
+
+</body>
+</html>

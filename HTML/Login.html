@@ -5,28 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/CSS/Login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Document</title>
+    <link rel="icon" href="/IMAGES/logo.jpg">
+    <title>Panda</title>
 </head>
 <body>
     <div class="wrapper"> 
         <div class=" form-box login">   
             <form action="#">
+                <p id="errorMessage" style="color: red; margin-left: 160px; font-weight: bolder ;"></p>
                 <h2>Login</h2>
                 <div class=" input-box">
                     <span class="icon">
                     <i class="fa fa-envelope-o" style="font-size:24px"></i>
                  </span> 
-                    <input type="email" required>
+                    <input id="EmailLogin" type="email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
-                <span class="icon eye-close" onclick="togglePasswordVisibility()">
+                <span class="icon eye-close" onclick="togglePasswordVisibility('passwordInput1')">
                     <i class="fa fa-eye-slash" class="eyeClose" style="font-size:24px"></i>
                 </span>
-                <span class="icon eye-open" onclick="togglePasswordVisibility()">
+                <span class="icon eye-open" onclick="togglePasswordVisibility('passwordInput1')">
                     <i class="fa fa-eye" class="eyeClose" style="font-size:24px"></i>
                 </span> 
-                <input id="passwordInput" type="password" required>
+                <input id="passwordInput1" type="password" required>
                 <label>Password</label>
             </div>
             <div class="remember-forgot">
@@ -34,7 +36,7 @@
                 remember me</label>
                 <a href="#">Forgot Password?</a>
             </div>
-            <button type="submit" class="btn" onclick="openGamesPage()">Login
+            <button type="submit" class="btn" onclick="loginClick()">Login
             </button>
                 <div class="login-register">
                     <p>Don't have an account? 
@@ -44,35 +46,39 @@
             </form>
         </div>
         <div class=" form-box register">
+            <p id="registerMessage" style="color: red; margin-left: 160px; font-weight: bolder ;"></p>
             <h2>Sign up</h2>
             <form action="#">
                 <div class=" input-box">
                     <span class="icon">
                         <i class="fa fa-user-circle-o" style="font-size:24px"></i>
                  </span> 
-                    <input type="text" required>
+                    <input id="Username" type="text" required>
                     <label>Username</label>
                 </div>
                 <div class=" input-box">
                     <span class="icon">
                     <i class="fa fa-envelope-o" style="font-size:24px"></i>
                  </span> 
-                    <input type="email" required>
+                    <input id="EmailSignUp" type="email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
-                <span class="icon">
-                    <i class="fa fa-lock" style="font-size:24px"></i>
-                </span> 
-                <input type="password" required>
-                <label>Password</label>
+                    <span class="icon eye-close" onclick="togglePasswordVisibility('passwordInput2')">
+                        <i class="fa fa-eye-slash" class="eyeClose"  style="font-size:24px" ></i>
+                    </span>
+                    <span class="icon eye-open" onclick="togglePasswordVisibility('passwordInput2')">
+                        <i class="fa fa-eye" class="eyeClose"  style="font-size:24px"></i>
+                    </span> 
+                    <input id="passwordInput2" type="password" required>
+                    <label>Password</label>
             </div>
             <div class="remember-forgot">
                 <label><input type="checkbox">
                 I agree to the terms & conditions</label>
                 
             </div>
-            <button type="submit" class="btn" onclick="openGamesPage()">Sign up
+            <button type="submit" class="btn" onclick="signUpClick()">Sign up
             </button>
                 <div class="login-register">
                     <p>Already have an account? 
