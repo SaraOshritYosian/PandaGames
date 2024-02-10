@@ -1,6 +1,7 @@
 let move_speed = 5, gravity = 0.4;
 let startTime, endTime;//זמן משחק
 let palyAgain =false;//אם השחקן רוצה לשחק שוב אז מתחיל משחק חדש
+let timerRunning = true;//שאם המשחק נגמר אז שהיימר יפסיק גם
 let panda = document.querySelector('.panda');
 let img = document.getElementById('panda-1');
 let score_g = document.getElementById('score');
@@ -73,13 +74,16 @@ function padNumber(num) {
     return (num < 10 ? '0' : '') + num;
 }
 function updateTimer() {
-    const currentTime = new Date().getTime();
-    const elapsedTime = currentTime - startTime;
-    const minutes = Math.floor(elapsedTime / (1000 * 60));
-    const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
-    const formattedTime = padNumber(minutes) + ':' + padNumber(seconds);
-    time_val.innerText = formattedTime;
-    requestAnimationFrame(updateTimer);
+    if(timerRunning){
+        const currentTime = new Date().getTime();
+        const elapsedTime = currentTime - startTime;
+        const minutes = Math.floor(elapsedTime / (1000 * 60));
+        const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+        const formattedTime = padNumber(minutes) + ':' + padNumber(seconds);
+        time_val.innerText = formattedTime;
+        requestAnimationFrame(updateTimer);
+    }
+   
 }
 
 /*פונקציה זו מופעלת כאשר המשתמש לוחץ על מקש "Enter" כדי להתחיל או להפעיל מחדש את המשחק. הוא מבצע את הפעולות הבאות:
@@ -96,7 +100,7 @@ document.addEventListener('keydown', (e) => {
         document.querySelectorAll('.pipe_sprite').forEach((e) => {
             e.remove();
         });
-        
+        timerRunning = true;
         img.style.display = 'block';
         panda.style.top = '40vh';
         game_state = 'Play';
@@ -186,6 +190,7 @@ function game_end(){
        message.classList.add('messageStyle');
        img.style.display = 'none';
        palyAgain =true;
+       timerRunning=false;
    
     }
 
