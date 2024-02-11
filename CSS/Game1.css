@@ -250,6 +250,7 @@ input[type="radio"]:checked+label {
 span{
     cursor: pointer; 
   }
+  
 span i{
     transform: scaleX(-1);
     margin-left: -590px;

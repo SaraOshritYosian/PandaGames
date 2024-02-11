@@ -39,8 +39,16 @@ let usernameMessage = document.getElementById('usernameMessage');
 let emailMessage = document.getElementById('emailMessage'); 
 let emailLoginMessage = document.getElementById('emailLoginMessage');
 let PasswordMessage = document.getElementById('PasswordMessage');
+
+let incorrectAttempts = 0;
+let blockedUser = false;
 // פונקציה שבודקת תקינות ונכונות של שחקן רשום
 function loginClick() {
+
+    if (blockedUser) {
+        errorMessage.innerHTML = 'Account is blocked. Please try again later.';
+        return;
+    }
     const enteredEmail = emailLogin.value;
     const enteredPassword = passwordInput1.value;
 
@@ -48,6 +56,8 @@ function loginClick() {
 
     // Find the user with the entered email
     const currentUser = userData.find(user => user.email === enteredEmail);
+
+   
 
     // Check if the user exists
     if (enteredEmail != '' & !currentUser) {
@@ -58,15 +68,33 @@ function loginClick() {
 
     // Check if the entered password matches the user's password
     if (currentUser.password !== enteredPassword) {
+        incorrectAttempts++;
         PasswordMessage.innerHTML = 'Incorrect password. Please try again.';
+        checkIncorrectAttempts();
         //emailLoginMessage.innerHTML = '';
         return;
     }
     // Login successful
+    incorrectAttempts = 0;
     emailLoginMessage.innerHTML = '';
     PasswordMessage.innerHTML = '';
+    errorMessage.innerHTML='';
     loginForm.reset();
+    setLoginCookie(); // Set cookie on successful login
     window.location.href = 'games.html';
+}
+
+function checkIncorrectAttempts() {
+    if (incorrectAttempts >= 3) {
+        blockedUser = true;
+        errorMessage.innerHTML = 'Too many incorrect attempts. Account blocked.';
+    }
+}
+
+function setLoginCookie() {
+    const expirationTime = new Date();
+    expirationTime.setMinutes(expirationTime.getMinutes() + 30); // Set expiration time (30 minutes in this example)
+    document.cookie = `loggedIn=true;expires=${expirationTime.toUTCString()};path=/`;
 }
 
 const remember = document.querySelector('.conditions');
