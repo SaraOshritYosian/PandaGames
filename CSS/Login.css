@@ -57,7 +57,13 @@ body {
     font-size: 18px;
     font-weight: bolder;
     color: white;
+    
 }
+.error{
+    border-color: red
+
+}
+
 .input-box label {
     position: absolute;
     top: 50%;
@@ -176,5 +182,13 @@ body {
   position: absolute;
   transition: none;
   transform: translateX(-1000px); 
+}
+.egistercheckbox{
+    background-color: red;
+}
+.conditions{
+    -webkit-text-stroke-width: 0.9px; 
+    -webkit-text-stroke-color: white;
+
 }
 

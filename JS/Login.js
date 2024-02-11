@@ -1,6 +1,7 @@
 //see the password or not
 const wrapper = document.querySelector('.wrapper');
-const signUpForm = document.querySelector('.form-box.register form');
+const loginForm = document.getElementById('loginForm');
+const signUpForm  = document.getElementById('signUpForm');
 const registerLink = document.querySelector('.register-link');
 const loginLink = document.querySelector('.login-link');
 function togglePasswordVisibility(formId) {//to see the password
@@ -27,88 +28,91 @@ loginLink.addEventListener('click', () => { wrapper.classList.remove('active');}
     window.location.href = 'games.html';
 }
 */
-let loginMessage = document.getElementById('errorMessage');
-let registerMessage = document.getElementById('registerMessage');
-
+//אם לא מקליד או מכניס קלט שגוי אז המסגרת אדומה
+var emailLogin = document.getElementById('EmailLogin');
+var passwordInput1 = document.getElementById('passwordInput1');
+var username = document.getElementById('Username');
+var emailSignUp = document.getElementById('EmailSignUp');
+var passwordInput2 = document.getElementById('passwordInput2');
+let errorMessage = document.getElementById('errorMessage');
+let usernameMessage = document.getElementById('usernameMessage');
+let emailMessage = document.getElementById('emailMessage'); 
+let emailLoginMessage = document.getElementById('emailLoginMessage');
+let PasswordMessage = document.getElementById('PasswordMessage');
 // פונקציה שבודקת תקינות ונכונות של שחקן רשום
 function loginClick() {
-    var email = document.getElementById('EmailLogin').value;
-    var password = document.getElementById('passwordInput1').value; 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {//האם המבנה לא נכון אז הודעה
-        loginMessage.innerHTML= 'Enter Email';
+    const enteredEmail = emailLogin.value;
+    const enteredPassword = passwordInput1.value;
+
+    const userData = JSON.parse(localStorage.getItem('user_data')) || [];
+
+    // Find the user with the entered email
+    const currentUser = userData.find(user => user.email === enteredEmail);
+
+    // Check if the user exists
+    if (enteredEmail != '' & !currentUser) {
+        emailLoginMessage.innerHTML = 'Email does not exist.';
+        //PasswordMessage.innerHTML = '';
         return;
     }
-    else{
-    } 
 
-    if (email === "example@example.com" && password === "password") {
-        setCookie("user", email, 1); // Expires in 1 day
-        window.location.href = "games.html";
-    } else {
-        // Example: Invalid login, track attempts and block if necessary
-        var attempts = localStorage.getItem('loginAttempts') || 0;
-        attempts++;
-        localStorage.setItem('loginAttempts', attempts);
-        if (attempts >= 3) {
-            // Example: Block the user after 3 failed attempts
-            localStorage.setItem('blockedUser', email);
-            alert("You have been blocked due to multiple failed login attempts.");
-        } else {
-            alert("Invalid email or password. Please try again.");
-        }
+    // Check if the entered password matches the user's password
+    if (currentUser.password !== enteredPassword) {
+        PasswordMessage.innerHTML = 'Incorrect password. Please try again.';
+        //emailLoginMessage.innerHTML = '';
+        return;
     }
+    // Login successful
+    emailLoginMessage.innerHTML = '';
+    PasswordMessage.innerHTML = '';
+    loginForm.reset();
+    window.location.href = 'games.html';
 }
 
-registerMessage.innerHTML=''; 
+const remember = document.querySelector('.conditions');
 //פונקציה שבודקת שחקן חדש
 function signUpClick(){
-    const username = document.getElementById('Username').value;
-    const email = document.getElementById('EmailSignUp').value;
-    const password = document.getElementById('passwordInput2').value; 
-    //localStorage.clear()
+    const username1 =username.value;
+    const email=emailSignUp.value;
+    const password=passwordInput2.value;
+    usernameMessage.innerHTML='';
+    emailMessage.innerHTML='';
+    //window.alert("dd"+username1+ email +password);
+   // localStorage.clear()
     event.preventDefault();
-    if(username ==""){    
-        registerMessage.innerHTML= 'Enter userName';
+    if (email !=''& !email.endsWith('@gmail.com')) {//האם המבנה לא נכון אז הודעה
+        emailMessage.innerHTML= 'Error Email';
         return;
     }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)|| email.endsWith('@gmail.com')) {//האם המבנה לא נכון אז הודעה
-        registerMessage.innerHTML= 'Enter Email';
-        return;
-    }
-    if(password ==""){    
-        registerMessage.innerHTML= 'Enter password';
-        return;
-    }
-    // Get the values entered by the user
     const existingData = JSON.parse(localStorage.getItem('user_data')) || [];
-        const userExists = existingData.some(user => user.username === username || user.email === email);
+    const userExists = existingData.some(user => user.username1 === username1);
+    if (userExists) {
+        usernameMessage.innerHTML='Username. Please choose different ones.';
+        return;
+    }
+    const MailExists = existingData.some(user =>user.email === email);
+    if (MailExists) {
+        emailMessage.innerHTML='email already exists.';
+        return;
+    }
+    
+    if(document.getElementById("registercheckbox").checked == false){
+        remember.style.color='red';
+        remember.style.webkitTextStrokeColor='black';
+        return;
+    }
+    
+      // Create a new user object and add it to local storage
+     const newUser = {username1, email, password };
+     existingData.push(newUser);
+     localStorage.setItem('user_data', JSON.stringify(existingData));
+     alert('Sign up successful! ');
+     
 
-        if (userExists) {
-            registerMessage.innerHTML='Username or email already exists. Please choose different ones.';
-            return;
-        }
-
-        // Create a new user object and add it to local storage
-        const newUser = { username, email, password };
-        existingData.push(newUser);
-        localStorage.setItem('user_data', JSON.stringify(existingData));
-
-        // Optionally, you can redirect to a different page or perform other actions after successful sign-up
-        alert('Sign up successful! '+ username+ email+password);
-
-        // Clear the form fields
-        signUpForm.reset();
+      // Clear the form fields
+      signUpForm.reset();
+      window.location.href = 'games.html';
+                        
     }
 
-/*Function to set a cookie with expiration time
-function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}*/
+
