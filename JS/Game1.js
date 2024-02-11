@@ -267,3 +267,12 @@ function apply_gravity() {
 
     requestAnimationFrame(create_pipe);
 }
+function showInformation() {
+    // You can modify this function to display game information as needed
+    alert("This is a panda running game. Press Enter to start and play. Press the up arrow to jump, and try not to touch the trees!");
+}
+
+
+function exit(){
+    window.location.href = 'Games.html';
+}

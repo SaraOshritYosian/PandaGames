@@ -49,6 +49,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     overflow: hidden; /* Added to hide overflow of clouds */
+   
     
 }
 
@@ -96,27 +97,17 @@ body {
 
 .cloud {
     position: absolute;
-    /*left: -200px;*/
     left:0;
-    /*top: 50px; /* Adjust as needed 
-    width: 200px;
-    height: 100px;*/
     background: white;
     border-radius: 1000px;
-    /*animation: moveCloud 20s linear infinite;*/
     z-index: 1;
     animation:zoomies 15s infinite linear;
 }
 
-/*@keyframes moveCloud {
-    to {
-        transform: translateX(100vw);
-    }
-}*/
 .cloud.one{
     top: 80px;
     width: 120px;
-    height:30px;
+    height:40px;
     animation-duration: 10s;
 }
 .cloud.two{
@@ -128,10 +119,33 @@ body {
 .cloud.three{
     top: 60px;
     width: 80px;
-    height:20px;
-    animation-duration: 30s;
+    height:23px;
+    animation-duration: 20s;
 }
-
+.cloud.four{
+    top: 115px;
+    width: 110px;
+    height:30px;
+    animation-duration: 13s;
+}
+.cloud.five{
+    top: 160px;
+    width: 99px;
+    height:28px;
+    animation-duration: 17s;
+}
+.cloud.six{
+    top: 10px;
+    width: 80px;
+    height:20px;
+    animation-duration: 6s;
+}
+.cloud.seven{
+    top: 100px;
+    width: 80px;
+    height:20px;
+    animation-duration: 22s;
+}
 
 .cloud::before{
   content:'';
@@ -166,4 +180,3 @@ body {
     }
 
 }
-
