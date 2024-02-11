@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #myForm {
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        input {
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        input.error {
+            border-color: red;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var myForm = document.getElementById("myForm");
+            var myInput = document.getElementById("myInput");
+
+            myForm.addEventListener("submit", function (event) {
+                if (myInput.value.trim() === "") {
+                    myInput.classList.add("error");
+                    event.preventDefault();
+                } else {
+                    myInput.classList.remove("error");
+                }
+            });
+
+            myInput.addEventListener("input", function () {
+                myInput.classList.remove("error");
+            });
+        });
+    </script>
+    <title>Form Validation</title>
+</head>
+<body>
+    <form id="myForm">
+        <label for="myInput">Type something:</label>
+        <input type="text" id="myInput" name="myInput" >
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

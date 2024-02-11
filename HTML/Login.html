@@ -10,9 +10,9 @@
 </head>
 <body>
     <div class="wrapper"> 
-        <div class=" form-box login">   
-            <form action="#">
-                <p id="errorMessage" style="color: red; margin-left: 160px; font-weight: bolder ;"></p>
+        <div class=" form-box login">
+            <p id="errorMessage" style="color: red; font-weight: bolder; margin-left: 20px; -webkit-text-stroke-width: 0.9px; -webkit-text-stroke-color: black;"></p>   
+            <form id="loginForm" action="#">
                 <h2>Login</h2>
                 <div class=" input-box">
                     <span class="icon">
@@ -20,6 +20,7 @@
                  </span> 
                     <input id="EmailLogin" type="email" required>
                     <label>Email</label>
+                    <p id="emailLoginMessage" style="color: red; font-weight: bolder; -webkit-text-stroke-width: 0.9px; -webkit-text-stroke-color: black;"></p>
                 </div>
                 <div class="input-box">
                 <span class="icon eye-close" onclick="togglePasswordVisibility('passwordInput1')">
@@ -30,6 +31,7 @@
                 </span> 
                 <input id="passwordInput1" type="password" required>
                 <label>Password</label>
+                <p id="PasswordMessage" style="color: red; font-weight: bolder; -webkit-text-stroke-width: 0.9px; -webkit-text-stroke-color: black ;"></p>
             </div>
             <div class="remember-forgot">
                 <label><input type="checkbox">
@@ -45,16 +47,16 @@
                 </div>
             </form>
         </div>
-        <div class=" form-box register">
-            <p id="registerMessage" style="color: red; margin-left: 160px; font-weight: bolder ;"></p>
+        <div class="form-box register">
             <h2>Sign up</h2>
-            <form action="#">
+            <form id="signUpForm" action="#">
                 <div class=" input-box">
                     <span class="icon">
                         <i class="fa fa-user-circle-o" style="font-size:24px"></i>
                  </span> 
-                    <input id="Username" type="text" required>
+                    <input id="Username" type="text" required >
                     <label>Username</label>
+                    <p id="usernameMessage" style="color: red; font-weight: bolder; -webkit-text-stroke-width: 0.9px; -webkit-text-stroke-color: black;"></p>
                 </div>
                 <div class=" input-box">
                     <span class="icon">
@@ -62,6 +64,7 @@
                  </span> 
                     <input id="EmailSignUp" type="email" required>
                     <label>Email</label>
+                    <p id="emailMessage" style="color: red; font-weight: bolder;  -webkit-text-stroke-width: 0.9px; -webkit-text-stroke-color: black;"></p>
                 </div>
                 <div class="input-box">
                     <span class="icon eye-close" onclick="togglePasswordVisibility('passwordInput2')">
@@ -73,8 +76,8 @@
                     <input id="passwordInput2" type="password" required>
                     <label>Password</label>
             </div>
-            <div class="remember-forgot">
-                <label><input type="checkbox">
+            <div class="remember-forgot conditions ">
+                <label><input id="registercheckbox" type="checkbox">
                 I agree to the terms & conditions</label>
                 
             </div>
