@@ -20,3 +20,9 @@ function openGame3(){
 function exit(){
     window.location.href = 'Home.html';
 }
+//כאשר לוחצים על הפרופיל אז נפתח פרטים לגבי השחקן
+const dropdown = document.querySelector('.dropdown');
+
+dropdown.addEventListener('click', () => {
+    dropdown.classList.toggle('active');
+});
