@@ -175,6 +175,7 @@ function play() {
     requestAnimationFrame(move);
 // סיום המשחק העתקת מלוח את הנתונים על המשחק ומראה לשחק ונותן לו אפשרות אם רוצה להמשיך או לא
 function game_end(){
+    const userData = JSON.parse(localStorage.getItem('user_data')) || [];// לקבל את הנתונים של השחקן
         score_title.innerHTML = '';
         level_title.innerHTML = '';
         level_val.innerHTML = '';
@@ -184,6 +185,30 @@ function game_end(){
         time_g.innerHTML = time_val.innerHTML;
         score_val.innerHTML = '';
         time_val.innerHTML = '';
+        const user_data =JSON.parse(localStorage.getItem('user_data'));
+        const pandaFlyValue = user_data.pandaFly;
+        if(easy.checked == true){
+            window.alert(user_data);
+            if (parseInt(score_g.innerHTML) > (parseInt(pandaFlyValue[0]))) {
+                // Update high score if the current score is higher 
+                localStorage.setItem('user_data', JSON.stringify(score_g.innerHTML));
+            }
+        }
+        if(Medium.checked == true){
+
+            if (parseInt(score_g.innerHTML) > parseInt(pandaFly[1])) {
+                // Update high score if the current score is higher
+                localStorage.setItem('user_data', JSON.stringify(score_g.innerHTML));
+            }
+            
+        }
+        if(hard.checked == true){
+            if (parseInt(score_g.innerHTML) > parseInt(pandaFly[2])) {
+                // Update high score if the current score is higher
+                localStorage.setItem('user_data', JSON.stringify(score_g.innerHTML));
+            }
+        }
+       
         message.innerHTML =
         'Game Over'.fontcolor('red') ;//+
        // '<br>Press Enter To Restart';

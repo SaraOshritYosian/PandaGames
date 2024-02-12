@@ -74,13 +74,13 @@ function loginClick() {
         //emailLoginMessage.innerHTML = '';
         return;
     }
+    const logUser = JSON.parse(localStorage.getItem(enteredEmail));
+    localStorage.setItem('user_data', JSON.stringify(currentUser));
     // Login successful
     incorrectAttempts = 0;
     emailLoginMessage.innerHTML = '';
     PasswordMessage.innerHTML = '';
     errorMessage.innerHTML='';
-    loggedInUser.points += 1; // Increment points
-    localStorage.setItem('user_data', JSON.stringify(userData));
     loginForm.reset();
     setLoginCookie(); // Set cookie on successful login
     window.location.href = 'games.html';
@@ -133,10 +133,10 @@ function signUpClick(){
     }
     
       // Create a new user object and add it to local storage
-     const newUser = {user:username1,email: email,password: password };
+      const score =[0,0,0]
+     const newUser = {user:username1,email: email,password: password ,pandaFly:score ,pandaPairs: '00;00'};
      existingData.push(newUser);
      localStorage.setItem('user_data', JSON.stringify(existingData));
-     
      alert('Sign up successful! ');
      
 
