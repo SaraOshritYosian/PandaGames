@@ -79,6 +79,8 @@ function loginClick() {
     emailLoginMessage.innerHTML = '';
     PasswordMessage.innerHTML = '';
     errorMessage.innerHTML='';
+    loggedInUser.points += 1; // Increment points
+    localStorage.setItem('user_data', JSON.stringify(userData));
     loginForm.reset();
     setLoginCookie(); // Set cookie on successful login
     window.location.href = 'games.html';
@@ -106,7 +108,7 @@ function signUpClick(){
     usernameMessage.innerHTML='';
     emailMessage.innerHTML='';
     //window.alert("dd"+username1+ email +password);
-   // localStorage.clear()
+    //localStorage.clear()
     event.preventDefault();
     if (email !=''& !email.endsWith('@gmail.com')) {//האם המבנה לא נכון אז הודעה
         emailMessage.innerHTML= 'Error Email';
@@ -131,15 +133,16 @@ function signUpClick(){
     }
     
       // Create a new user object and add it to local storage
-     const newUser = {username1, email, password };
+     const newUser = {user:username1,email: email,password: password };
      existingData.push(newUser);
      localStorage.setItem('user_data', JSON.stringify(existingData));
+     
      alert('Sign up successful! ');
      
 
       // Clear the form fields
       signUpForm.reset();
-      window.location.href = 'games.html';
+      window.location.href = 'games.html?';
                         
     }
 
