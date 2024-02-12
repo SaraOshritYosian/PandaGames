@@ -38,7 +38,8 @@ let errorMessage = document.getElementById('errorMessage');
 let usernameMessage = document.getElementById('usernameMessage');
 let emailMessage = document.getElementById('emailMessage'); 
 let emailLoginMessage = document.getElementById('emailLoginMessage');
-let PasswordMessage = document.getElementById('PasswordMessage');
+let PasswordMessage = document.getElementById('PasswordMessage'); 
+let PasswordMessage1 = document.getElementById('passwordMessage1');
 
 let incorrectAttempts = 0;
 let blockedUser = false;
@@ -74,7 +75,6 @@ function loginClick() {
         //emailLoginMessage.innerHTML = '';
         return;
     }
-    localStorage.setItem('user_data', JSON.stringify(userData));
     // Login successful
     incorrectAttempts = 0;
     emailLoginMessage.innerHTML = '';
@@ -124,6 +124,10 @@ function signUpClick(){
         emailMessage.innerHTML='email already exists.';
         return;
     }
+    if (password.length < 8) {
+        PasswordMessage1.innerHTML = 'Password must be at least 8 characters long.';
+        return;
+    }
     
     if(document.getElementById("registercheckbox").checked == false){
         remember.style.color='red';
@@ -132,15 +136,15 @@ function signUpClick(){
     }
     
       // Create a new user object and add it to local storage
-     const newUser = {user:username1,email: email,password: password ,pandaFly:[0,0,0] ,pandaPairs: '00;00'};
+     const newUser = {user:username1,email: email,password: password };
      existingData.push(newUser);
-     localStorage.setItem('user_data', JSON.stringify('user_data'));
+     localStorage.setItem('user_data', JSON.stringify(existingData));
      alert('Sign up successful! ');
      
 
       // Clear the form fields
       signUpForm.reset();
-      window.location.href = 'games.html?';
+      window.location.href = 'games.html?' + email;
                         
     }
 

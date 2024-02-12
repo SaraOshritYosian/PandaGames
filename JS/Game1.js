@@ -185,7 +185,7 @@ function game_end(){
         time_g.innerHTML = time_val.innerHTML;
         score_val.innerHTML = '';
         time_val.innerHTML = '';
-        const user_data =JSON.parse(localStorage.getItem('user_data'));
+       /* const user_data =JSON.parse(localStorage.getItem('user_data'));
         const pandaFlyValue = user_data.pandaFly;
         if(easy.checked == true){
             window.alert(user_data);
@@ -208,7 +208,7 @@ function game_end(){
                 localStorage.setItem('user_data', JSON.stringify(score_g.innerHTML));
             }
         }
-       
+       */
         message.innerHTML =
         'Game Over'.fontcolor('red') ;//+
        // '<br>Press Enter To Restart';
