@@ -59,13 +59,13 @@ function loginClick() {
 
    
 
-    // Check if the user exists
+    // Check if the user exists 
     if (enteredEmail != '' & !currentUser) {
         emailLoginMessage.innerHTML = 'Email does not exist.';
         //PasswordMessage.innerHTML = '';
         return;
     }
-
+//
     // Check if the entered password matches the user's password
     if (currentUser.password !== enteredPassword) {
         incorrectAttempts++;
