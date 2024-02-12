@@ -59,13 +59,13 @@ function loginClick() {
 
    
 
-    // Check if the user exists 
+    // Check if the user exists
     if (enteredEmail != '' & !currentUser) {
         emailLoginMessage.innerHTML = 'Email does not exist.';
         //PasswordMessage.innerHTML = '';
         return;
     }
-//
+
     // Check if the entered password matches the user's password
     if (currentUser.password !== enteredPassword) {
         incorrectAttempts++;
@@ -74,8 +74,7 @@ function loginClick() {
         //emailLoginMessage.innerHTML = '';
         return;
     }
-    const logUser = JSON.parse(localStorage.getItem(enteredEmail));
-    localStorage.setItem('user_data', JSON.stringify(currentUser));
+    localStorage.setItem('user_data', JSON.stringify(userData));
     // Login successful
     incorrectAttempts = 0;
     emailLoginMessage.innerHTML = '';
@@ -133,10 +132,9 @@ function signUpClick(){
     }
     
       // Create a new user object and add it to local storage
-      const score =[0,0,0]
-     const newUser = {user:username1,email: email,password: password ,pandaFly:score ,pandaPairs: '00;00'};
+     const newUser = {user:username1,email: email,password: password ,pandaFly:[0,0,0] ,pandaPairs: '00;00'};
      existingData.push(newUser);
-     localStorage.setItem('user_data', JSON.stringify(existingData));
+     localStorage.setItem('user_data', JSON.stringify('user_data'));
      alert('Sign up successful! ');
      
 
