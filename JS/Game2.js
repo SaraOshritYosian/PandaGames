@@ -1,9 +1,9 @@
 const tailesContainer = document.querySelector(".tiles");
-const infoButton = document.querySelector(".info-button"); // Select the info button element
+const infoButton = document.querySelector(".info-button"); // Select the information about the game button 
 const infoText = "This is a memory game where you need to match tiles of the same color. Click on two tiles to reveal their color. If they match, they remain revealed. If not, they will be hidden again after a brief moment. Try to match all the tiles as quickly as possible!"; // Information text
 
-let tileCount = 4; // Initial tile count
-let columns = 2; // Initial number of columns
+let tileCount = 4; // Initial tile count=EASY
+let columns = 2; // Initial number of columns=EASY
 const colors = ["DeepPink", "pink", "HotPink", "LightGreen", "DeepSkyBlue", "MediumTurquoise", "Aqua", "Aquamarine"]; // 8 colors
 let colorPickList = [...colors.slice(0, tileCount / 2), ...colors.slice(0, tileCount / 2)]; // Array with half the colors duplicated
 
@@ -67,7 +67,7 @@ function buildTile(color) {
             return;
         }
 
-        // If colors don't match, hide the tiles again after a brief moment
+        // If colors don't match, hide the tiles again after 1 second
         awaitingEndOfMove = true;
         setTimeout(() => {
             element.style.backgroundColor = null;
@@ -90,7 +90,7 @@ for (let i = 0; i < tileCount; i++) {
     tailesContainer.appendChild(tile);
 }
 
-// Event listener for the info button
+
 infoButton.addEventListener("click", () => {
     alert(infoText);
 });
