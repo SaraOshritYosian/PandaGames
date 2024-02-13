@@ -1,54 +1,10 @@
-/*body {
-    background-color: #0CC0DF;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-.panda-img {
-    width: 450px;
-    height: 400px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-.title {
-    font-size: 4em;
-    font-weight: bold;
-    color: black;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
-    text-align: center;
-}
-.button {
-    position: absolute;
-    bottom: 150px;
-    right: 230px;
-    padding: 10px 20px;
-    background-color: transparent;
-    color: white; /* Changed color to white 
-    border: none;
-    /*border: 2px solid whitesmoke; /* Added border */
-    /*border-radius: 1.4px;
-    font-size: 1.6em;
-    font-family:'Courier New', Courier, monospace;
-    font-weight: bold;
-    cursor: pointer;
-}*/
 body {
     background-color: #0CC0DF;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    overflow: hidden; /* Added to hide overflow of clouds */
+    overflow: hidden; 
    
     
 }
@@ -177,11 +133,11 @@ body {
 @keyframes zoomies{
     from{
         left:0;
-        transform: translateX(-100%);/*smooth transform*/
+        transform: translateX(-100%);
     }
     to{
         left:100%;
-        transform: translateX(0%);/*smooth transform*/
+        transform: translateX(0%);
     }
 
 }

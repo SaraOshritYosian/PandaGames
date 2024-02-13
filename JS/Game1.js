@@ -86,15 +86,8 @@ function updateTimer() {
    
 }
 
-/*פונקציה זו מופעלת כאשר המשתמש לוחץ על מקש "Enter" כדי להתחיל או להפעיל מחדש את המשחק. הוא מבצע את הפעולות הבאות:
-
-- מסיר את כל רכיבי הצינור הקיימים על המסך.
-- מציג את דמות הפנדה וקובע את מיקומה ההתחלתי.
-- משנה את מצב המשחק ל"שחק".
-- מנקה את ההודעה ומאפס את תצוגת הניקוד.
-- מסיר את הסגנון של המשחק מעל ההודעה.
-- קורא לפונקציית "הפעל" כדי להתחיל את לולאת המשחק.*/
-
+//פונקציה זו מופעלת כאשר המשתמש לוחץ על מקש "Enter" כדי להתחיל או להפעיל מחדש את המשחק. הוא מבצע את הפעולות הבאות:
+//מכין את המשחק
 document.addEventListener('keydown', (e) => {
     if (palyAgain==false &&chooseLevel.style.display =='none' &&e.key == 'Enter' && game_state !== 'Play') {
         document.querySelectorAll('.pipe_sprite').forEach((e) => {
@@ -293,7 +286,6 @@ function apply_gravity() {
     requestAnimationFrame(create_pipe);
 }
 function showInformation() {
-    // You can modify this function to display game information as needed
     alert("This is a panda running game. Press Enter to start and play. Press the up arrow to jump, and try not to touch the trees!");
 }
 

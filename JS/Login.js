@@ -23,12 +23,7 @@ registerLink.addEventListener('click', () => { wrapper.classList.add('active') ;
 
 loginLink.addEventListener('click', () => { wrapper.classList.remove('active');});
 
-//click on log in open thr Games PAGE
-/*function openGamesPage(){
-    window.location.href = 'games.html';
-}
-*/
-//אם לא מקליד או מכניס קלט שגוי אז המסגרת אדומה
+//אם לא מקליד או מכניס קלט שגוי אז הודעה אדומה
 var emailLogin = document.getElementById('EmailLogin');
 var passwordInput1 = document.getElementById('passwordInput1');
 var username = document.getElementById('Username');
@@ -54,25 +49,18 @@ function loginClick() {
     const enteredPassword = passwordInput1.value;
 
     const userData = JSON.parse(localStorage.getItem('user_data')) || [];
-
-    // Find the user with the entered email
     const currentUser = userData.find(user => user.email === enteredEmail);
 
-   
-
-    // Check if the user exists
     if (enteredEmail != '' & !currentUser) {
         emailLoginMessage.innerHTML = 'Email does not exist.';
         //PasswordMessage.innerHTML = '';
         return;
     }
 
-    // Check if the entered password matches the user's password
     if (currentUser.password !== enteredPassword) {
         incorrectAttempts++;
         PasswordMessage.innerHTML = 'Incorrect password. Please try again.';
         checkIncorrectAttempts();
-        //emailLoginMessage.innerHTML = '';
         return;
     }
     // Login successful
@@ -81,7 +69,7 @@ function loginClick() {
     PasswordMessage.innerHTML = '';
     errorMessage.innerHTML='';
     loginForm.reset();
-    setLoginCookie(); // Set cookie on successful login
+    setLoginCookie(); 
     window.location.href = 'games.html';
 }
 
@@ -106,7 +94,6 @@ function signUpClick(){
     const password=passwordInput2.value;
     usernameMessage.innerHTML='';
     emailMessage.innerHTML='';
-    //window.alert("dd"+username1+ email +password);
     //localStorage.clear()
     event.preventDefault();
     if (email !=''& !email.endsWith('@gmail.com')) {//האם המבנה לא נכון אז הודעה
@@ -135,7 +122,6 @@ function signUpClick(){
         return;
     }
     
-      // Create a new user object and add it to local storage
      const newUser = {user:username1,email: email,password: password };
      existingData.push(newUser);
      localStorage.setItem('user_data', JSON.stringify(existingData));
