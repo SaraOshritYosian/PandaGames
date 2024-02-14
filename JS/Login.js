@@ -122,7 +122,7 @@ function signUpClick(){
         return;
     }
     
-     const newUser = {user:username1,email: email,password: password };
+     const newUser = {user:username1,email: email,password: password, score:[0,0,0],logIn:1 };
      existingData.push(newUser);
      localStorage.setItem('user_data', JSON.stringify(existingData));
      alert('Sign up successful! ');
