@@ -11,8 +11,8 @@ The main window:
 
 Login:![image](https://github.com/SaraOshritYosian/PandaGames/assets/92250796/8f77d1b6-88f1-4c3d-81dd-01c98584a6ed)
 ![image](https://github.com/SaraOshritYosian/PandaGames/assets/92250796/391e450a-61d6-469b-9649-1139dc0f4d38)
+![image](https://github.com/SaraOshritYosian/PandaGames/assets/92250796/86035d3f-e76a-4e90-98cc-7420acb594b6)
 ![image](https://github.com/SaraOshritYosian/PandaGames/assets/92250796/49b3fea0-b463-4689-88d4-a7b8a70ebf74)
-![image](https://github.com/SaraOshritYosian/PandaGames/assets/92250796/b15c696e-24f3-468b-a70f-8c4adae0f521)
 ![image](https://github.com/SaraOshritYosian/PandaGames/assets/92250796/ac71684f-b91b-4084-b057-593a95679e72)
 
 
